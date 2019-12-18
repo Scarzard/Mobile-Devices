@@ -1,0 +1,61 @@
+For what do we use WebSockets? 
+	Polling strategy, web socket manten una conexio constant amb el servidor, de forma immediata podem rebre informacio de manera directa.
+	Tambe pots rebre-la. 
+	Comunicacio asincrona, el servidor tenvia info de manera inesperada, sense demanarla utilitzant la tecnica de push
+
+
+From a programming point of view, briefly explain what you need to program of a WebSocket  client. 
+	Programar onopen, onerror, onclose, onmessage.
+	1. Obrim eñ websocket. 2. Quan rebem un error 3. Quan tanquem la conexio amb el servidor. 4.  s'esxecuta quan envien un msg.
+
+What’s the difference between the polling and the push strategy? 
+	polling: demanar info-> el server te la dona
+	push: la info s'envia sense cridar el server
+
+What’s the purpose of programming a service component? 
+	Per executar accions en background, en segon pla. on no hi ha una conexio directa amb el user.
+
+Provide a couple of examples where it is useful to program a service component. 
+	Rebre sms, sms instantani, ubi del movil, descarregar un fitxer molt gran (un joc), reproduir musica.
+
+Briefly explain how you use a broadcast receiver to exchange data in between a service  component and an activity. 
+	la activitat has de prograamr un bradcast reciever, sha de registrar, que ha de ser el mateix tipus de accio per aixi enviar, un intent filter 	
+	
+What’s a system event? Could you give some examples? 
+	el sistem genera missatges de bradcast, que lusuari pot rebrels o ignorarlos. el sistema sempre envia un missatge de broadcast reciever
+	si una app ha esta programda per rebre aquest event, reaccionara adecuadament. ex: obrir el mobil, tancar el movil, rebre una conexio wifi
+	o quan es perd.
+
+For what do you program an alarm? 
+	executar una accio futura, el registre de la alarma es la a la OS, la accio sexecuta independentment de la vida (cicle de vida de la app)
+	de la applicacio (si esta tancat o no). normalment s´sxecuta un service component en background sense que el user ho demani.
+	
+What’s the advantage of programming an alarm with inexact repetition? 
+	varies alarmes properes en el temps, les ajunta i les executa a l´hora. cronologicament han d'estar mes o mensy juntes. mes eficient
+	
+Which persistence mechanisms, for the local storage of data, define Android? 
+	referencies, fitxer, bases de dades.
+
+How many and which are the Geolocation providers defined by Android? 
+	internet(wifi, es diu network), gps, passiu (tu no demanes geolocalitzacio, si una altre app ho demana, si no hi ha ninguna altre app, no rebras res)
+
+For what do you program a LocationListener? 
+	la manera de funcionar: et registres un listener per un proveidor concret, quan el prov tingui noves dades, cridara un metode de locationlistener per actualitzar la teva pos.
+
+What’s the difference between the Geolocation library and the cartographic library of  Android? 
+	cartografia es de google -> externa. geolocal -> nativa de andorid 
+
+Enumerate and briefly describe the different notification types defined by Android.
+	toast notification, pop up pira dintre dun ratet
+	status bar, arrossegar,
+	dialog de toast permanent fins que lusuari reacciona, guanya el focus, app queda en segon pla
+	
+Conceptually explain the main differences between the programming of WhatsApp_v1 and  WhatsApp_v2. 
+	polling strategy per un wbesocket dintre de la mateixa activitat
+
+Conceptually explain the main differences between the programming of WhatsApp_v2 and  WhatsApp_v3. 
+	websockets obert des de dins de messages activity (des de un servei i no de una activitat, requeria la programacio de un broadcast reciever)
+
+Conceptually explain the main differences between the programming of WhatsApp_v3 and  WhatsApp_v4.
+	afegir persitencia per guardar en local el user i els sms rebuts, per despres reprogramar lactivitat, per demanar els missatges no rebuts fins el moment. mes eficient
+	i menys crides al server, mes eficient amb arxius multimedia, com audios, videos, fotos	
